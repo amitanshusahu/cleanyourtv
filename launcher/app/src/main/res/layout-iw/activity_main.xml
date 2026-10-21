@@ -103,27 +103,25 @@
         android:visibility="gone"
         android:importantForAccessibility="no" />
 
-    <!-- Top shelf: the focused dock app's name, positioned above the dock in code. -->
+    <!-- Selected dock app's name, centred in small muted type just above the dock. Positioned in code. -->
     <LinearLayout
         android:id="@+id/hero"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_gravity="right"
-        android:gravity="right"
+        android:layout_gravity="top"
         android:orientation="vertical"
         android:alpha="0">
 
         <TextView
             android:id="@+id/heroName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:textColor="#FFFFFFFF"
-            android:textSize="48sp"
-            android:fontFamily="@font/outfit_light"
-            android:letterSpacing="-0.02"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:textColor="#8CFFFFFF"
+            android:textSize="15sp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0.06"
             android:includeFontPadding="false"
             android:singleLine="true" />
 
@@ -132,8 +130,7 @@
             android:id="@+id/heroMeta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginEnd="4dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:singleLine="true"
             android:textColor="#B3FFFFFF"
@@ -145,8 +142,7 @@
             android:id="@+id/heroDots"
             android:layout_width="wrap_content"
             android:layout_height="6dp"
-            android:layout_gravity="right"
-            android:layout_marginEnd="4dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:visibility="gone" />
@@ -177,7 +173,8 @@
                 android:layout_toEndOf="@+id/topButtons"
                 android:layout_marginStart="16dp"
                 android:orientation="horizontal"
-                android:gravity="right|bottom">
+                android:gravity="right|bottom"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -303,9 +300,7 @@
                 android:id="@+id/topButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignBottom="@id/leftBlock"
-                android:layout_marginBottom="6dp"
+                android:layout_centerHorizontal="true"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="horizontal">
@@ -362,6 +357,67 @@
                 android:scrollbars="none"
                 android:descendantFocusability="afterDescendants" />
         </FrameLayout>
+    </LinearLayout>
+
+    <!-- Large 24-hour clock, centred in the free space above the dock. -->
+    <TextClock
+        android:id="@+id/homeClock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:translationY="-65dp"
+        android:paddingStart="72dp"
+        android:paddingEnd="72dp"
+        android:format12Hour="HH:mm"
+        android:format24Hour="HH:mm"
+        android:textColor="#FFFFFFFF"
+        android:textSize="160sp"
+        android:fontFamily="@font/outfit_light"
+        android:letterSpacing="-0.03"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:fontFeatureSettings="'tnum'"
+        android:focusable="false"
+        android:importantForAccessibility="no" />
+
+    <!-- Footer under the dock: brand on the left, credit on the right. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:paddingBottom="16dp"
+        android:focusable="false"
+        android:importantForAccessibility="no">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@string/home_title"
+            android:textColor="#66FFFFFF"
+            android:textSize="12sp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0.12" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@string/home_credit"
+            android:textColor="#66FFFFFF"
+            android:textSize="12sp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0.04" />
     </LinearLayout>
 
     <!-- The single floating glass highlight that springs between tiles. -->

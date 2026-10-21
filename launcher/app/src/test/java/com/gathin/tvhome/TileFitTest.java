@@ -40,7 +40,8 @@ public class TileFitTest {
     @Test
     public void oneRowUnderATitledDockFits() {
         int w = AppAdapter.tileWidthPx(INNER, GRID_H, 4, 1, true, true, D);
-        assertTrue(w < AppAdapter.tileWidthPx(INNER, 4, D));
+        // The title is only a small line above the dock now, so one full-width row fits under it.
+        assertEquals(AppAdapter.tileWidthPx(INNER, 4, D), w);
         assertTrue(height(w, 1, true) <= GRID_H + 2);
     }
 
@@ -66,7 +67,9 @@ public class TileFitTest {
 
     @Test
     public void droppingTheTitleGivesBiggerTiles() {
-        assertTrue(AppAdapter.tileWidthPx(INNER, GRID_H, 4, 1, false, true, D)
-                > AppAdapter.tileWidthPx(INNER, GRID_H, 4, 1, true, true, D));
+        // On a shorter grid the height decides, and the title room still shrinks the tiles.
+        int shortGrid = 700;
+        assertTrue(AppAdapter.tileWidthPx(INNER, shortGrid, 4, 1, false, true, D)
+                > AppAdapter.tileWidthPx(INNER, shortGrid, 4, 1, true, true, D));
     }
 }

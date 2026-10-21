@@ -64,7 +64,7 @@ final class Config {
     final boolean moduleCards;
     /** Calmer motion for weak GPUs (config.xml, reduced_motion): stiff spring, short fades, no replay. */
     final boolean reducedMotion;
-    /** The focused dock app's name in large type above the dock (config.xml, dock_title). */
+    /** The focused dock app's name in small muted type above the dock (config.xml, dock_title). */
     final boolean dockTitle;
     /** The dock as its own row: band, no names, parked low (config.xml dock_row). false: one plain grid. */
     final boolean dockRow;

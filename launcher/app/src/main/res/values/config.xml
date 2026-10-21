@@ -115,8 +115,8 @@
          the dock, its title and this many rows would not otherwise fit the screen height. -->
     <integer name="rows_below_dock">0</integer>
 
-    <!-- The focused dock app's name in large type above the dock. false keeps only the glow, which leaves room
-         for bigger tiles when rows_below_dock is 2 or 3. -->
+    <!-- The focused dock app's name in small, muted type above the dock. false keeps only the glow, which
+         leaves room for bigger tiles when rows_below_dock is 2 or 3. -->
     <bool name="dock_title">true</bool>
 
     <!-- Tiles per row in the grid; the dock always has this many slots. Tiles are 180dp wide at 4 columns and
@@ -142,7 +142,7 @@
          true keeps the GPU drawing path but calms the movement: a stiff highlight spring with no bounce,
          tiles that zoom without overshoot, shorter fades and no tile entrance when Home comes back. Set it
          here or with "reduced_motion": true in a theme's config.json; false keeps the normal motion. -->
-    <bool name="reduced_motion">false</bool>
+    <bool name="reduced_motion">true</bool>
 
     <!-- One line under the clock: CPU, free memory and free storage. Off by default; a theme can set
          "show_stats": true. Nothing is read, and the clock does not move, while this is false. -->

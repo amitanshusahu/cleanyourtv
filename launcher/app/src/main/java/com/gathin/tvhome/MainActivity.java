@@ -96,11 +96,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean rtlAppGrid;
     private static final long MINUTE_MS = 60_000L;
     private static final long STATS_MS = 10_000L;
-    /**
-     * 2025-01-01. TVs without a clock battery boot at the epoch (08:00 in China) and keep it until network
-     * time arrives; the clock, date and greeting stay hidden before then.
-     */
-    private static final long TIME_VALID_AFTER_MS = 1_735_689_600_000L;
     private String liveTvPkg;
     private String liveTvAction;
     private String inputAction;
@@ -1167,7 +1162,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showHero(int position, float dockTopInRoot) {
         String label = adapter.labelAt(position);
         int color = adapter.ambientColorAt(position);
-        float y = dockTopInRoot - 14 * density - 26 * density - hero.getHeight();
+        float y = dockTopInRoot - 28 * density - hero.getHeight();
         boolean changed = !label.contentEquals(heroName.getText());
         if (cinematic) showHeroArt(position);
 
@@ -1374,8 +1369,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                         new float[]{0f, 0.5f, 1f},
                         Shader.TileMode.CLAMP));
             } else {
+                // Bottom centre, behind the dock, so the glow belongs to the focused dock app.
                 paint.setShader(new RadialGradient(
-                        w * 0.32f, h * 0.42f, w * 0.62f,
+                        w * 0.50f, h * 0.78f, w * 0.55f,
                         new int[]{0x5CFFFFFF, 0x26FFFFFF, 0x00FFFFFF},
                         new float[]{0f, 0.45f, 1f},
                         Shader.TileMode.CLAMP));
@@ -1412,7 +1408,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * Grid tiles (every tile with dock_row false): the glow behind the grid takes the focused tile's colour; the big
+     * Grid tiles (every tile with dock_row false): the glow behind the grid takes the focused tile's colour; the
      * name above the dock does not show (every grid tile has its name underneath).
      */
     private void showGlowOnly(int position) {
@@ -1788,14 +1784,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final Runnable clockCheck = this::updateClockVisibility;
 
     private void updateClockVisibility() {
-        boolean valid = System.currentTimeMillis() >= TIME_VALID_AFTER_MS;
-        clockBlock.setVisibility(valid ? View.VISIBLE : View.INVISIBLE);
+        // The Home header no longer shows a clock, date or greeting; keep the old header block hidden.
+        clockBlock.setVisibility(View.GONE);
         handler.removeCallbacks(clockCheck);
-        if (valid) {
-            updateGreeting();
-        } else {
-            handler.postDelayed(clockCheck, 1_000L);
-        }
     }
 
     private void updateGreeting() {
