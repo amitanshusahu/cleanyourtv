@@ -4,8 +4,8 @@ import android.service.dreams.DreamService;
 import android.view.View;
 
 /**
- * Screensaver: a large centred 24-hour clock on a plain black screen, with the brand and date below.
- * Static, image-free and cheap enough for a 1 GB TV.
+ * Screensaver: a large centred 24-hour clock over the screensaver artwork, with the brand and date below.
+ * Static and cheap enough for a 1 GB TV.
  */
 public class ClockDream extends DreamService {
 

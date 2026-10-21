@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Screensaver (ClockDream): a large 24-hour clock centred on black, with the brand and the date below. -->
+<!-- Screensaver (ClockDream): a large 24-hour clock centred over the screensaver artwork, with the brand and date below. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF000000">
+
+    <!-- Screensaver artwork, cropped to fill the screen. -->
+    <ImageView
+        android:id="@+id/dreamBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/screensaver"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no" />
 
     <LinearLayout
         android:id="@+id/dreamContent"
