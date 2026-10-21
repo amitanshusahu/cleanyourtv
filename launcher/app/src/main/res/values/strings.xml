@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Home</string>
+    <!-- Brand name in the Home footer. -->
+    <string name="home_title" translatable="false">GODSLAYER OS</string>
+    <!-- Credit on the right side of the Home footer. -->
+    <string name="home_credit" translatable="false">created by Amitanshu Sahu</string>
     <string name="inputs">Inputs</string>
     <string name="wifi">Wi-Fi</string>
     <string name="settings">Settings</string>

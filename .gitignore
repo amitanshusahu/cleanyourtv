@@ -5,6 +5,8 @@ launcher/.gradle/
 launcher/build/
 launcher/app/build/
 launcher/local.properties
+# test-launcher.sh's per-device record of the setup it has to put back
+launcher/.test-launcher-*.state
 # your own TV's dumps (serial, android_id, device names) stay local
 backup/
 .DS_Store
